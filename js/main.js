@@ -15,7 +15,7 @@ alert("Bienvenue dans le jeu du pendu !");
 
 // variables globales
 var scoreTotal = 7;
-var word = [
+const word = [
     "javascript",
     "programming",
     "git",
@@ -25,15 +25,15 @@ var word = [
     "client"
 ]
 console.log(word);
-
+//-----------------------------------------------
 //Choix aléatoire
 function choiceRandomWord (){
-    var randomWord = Math.floor(Math.random() * Math.floor(word.length));
+    let randomWord = Math.floor(Math.random() * Math.floor(word.length));
     return word[randomWord];
 }
 var randomWord = choiceRandomWord(word);
 console.log(randomWord);
-
+//-------------------------------------------------
 //Affiche : _ _ _ _ _ _
 function showHiddenLetter (randomWord){
     let hiddenLetter = "";
@@ -45,22 +45,31 @@ function showHiddenLetter (randomWord){
 var hiddenLetter = showHiddenLetter(randomWord)
 console.log(`Trouves le mot caché : ${hiddenLetter}`);
 alert(`Trouve le mot caché : ${hiddenLetter}`);
-
+//----------------------------------------------------
 // affiche : rentrer une lettre
 // + rentrer une lettre
 function showPutLetter (){
-    var userChoice = prompt(`Points restants : ${scoreTotal} \n\n${hiddenLetter}\n\nRentrer une lettre !`);
+    let userChoice = prompt(`Points restants : ${scoreTotal} \n\n${hiddenLetter}\n\nRentrer une lettre !`);
     return userChoice;
 }
 userChoice = showPutLetter();
 console.log(userChoice);
-
-
-
-
-
-
-
+//------------------------------------------------------
+//Check de la lettre
+function checkLetter() {
+    let goodChoice = "";
+    var badChoice = "";
+    if (randomWord.includes(userChoice)) {
+        alert(`GG ! ${scoreTotal}`)
+        return goodChoice;     
+    }
+        else {
+        scoreTotal --, alert(`Try again ! ${scoreTotal}`);
+        return badChoice;    
+    }            
+}
+var letter = checkLetter();
+console.log(letter);
 
 
     //si ok 
@@ -74,4 +83,4 @@ console.log(userChoice);
 
 //vérifier si le mot est complet pour continuer le jeu
     //si ok stop et WIN
-        //sinon retourne a affiche : _ _ _ _ _ _
+        //sinon retourne a affiche : _ _
