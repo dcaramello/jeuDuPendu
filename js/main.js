@@ -46,16 +46,22 @@ var hiddenLetter = showHiddenLetter(randomWord)
 console.log(`Trouves le mot caché : ${hiddenLetter}`);
 alert(`Trouve le mot caché : ${hiddenLetter}`);
 
-//affiche : rentrer une lettre
- 
-function putLetter (){
-    showPut = "";
-    alert(`Points restants : ${scoreTotal} \n\nRentrer une lettre !`);
-    return showPut;
+// affiche : rentrer une lettre
+// + rentrer une lettre
+function showPutLetter (){
+    var userChoice = prompt(`Points restants : ${scoreTotal} \n\n${hiddenLetter}\n\nRentrer une lettre !`);
+    return userChoice;
 }
-showPut = putLetter();
+userChoice = showPutLetter();
+console.log(userChoice);
 
-// rentrer une lettre
+
+
+
+
+
+
+
 
     //si ok 
         // remplace le _
