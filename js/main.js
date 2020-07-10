@@ -1,10 +1,20 @@
 // Le jeu du pendu //
 
-// message bienvenu
-alert("Bienvenu dans le jeu du pendu !");
+//             ============
+//              |      ||
+//              O      || 
+//             /|\     ||
+//            / | \    ||
+//             / \     ||
+//            /   \    ||
+//                     ||
+// ---------------------------------------
+
+// message bienvenue
+alert("Bienvenue dans le jeu du pendu !");
 
 // variables globales
-var score = 7;
+var scoreTotal = 7;
 var word = [
     "javascript",
     "programming",
@@ -18,23 +28,33 @@ console.log(word);
 
 //Choix aléatoire
 function choiceRandomWord (){
-var randomWord = Math.floor(Math.random() * Math.floor(word.length));
-  return word[randomWord];
+    var randomWord = Math.floor(Math.random() * Math.floor(word.length));
+    return word[randomWord];
 }
 var randomWord = choiceRandomWord(word);
 console.log(randomWord);
 
 //Affiche : _ _ _ _ _ _
+function showHiddenLetter (randomWord){
     let hiddenLetter = "";
     for (var i of randomWord){
-    hiddenLetter += " _ ";
-
-console.log(`Trouves le mot caché : ${hiddenLetter}`);
+        hiddenLetter += " _ ";
     }
-
+    return hiddenLetter;
+}
+var hiddenLetter = showHiddenLetter(randomWord)
+console.log(`Trouves le mot caché : ${hiddenLetter}`);
+alert(`Trouve le mot caché : ${hiddenLetter}`);
 
 //affiche : rentrer une lettre
  
+function putLetter (){
+    showPut = "";
+    alert(`Points restants : ${scoreTotal} \n\nRentrer une lettre !`);
+    return showPut;
+}
+showPut = putLetter();
+
 // rentrer une lettre
 
     //si ok 
