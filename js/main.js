@@ -31,7 +31,10 @@ const WORDS = [
     "computer"
 ]
 console.log(WORDS);
+
 //////////////////////////////////////////////////////////////////////////////
+// LES FONCTIONS
+
 //Choix aléatoire
 function choiceRandomWord (){
     let randomWord = Math.floor(Math.random() * Math.floor(WORDS.length));
@@ -40,7 +43,7 @@ function choiceRandomWord (){
 
 //////////////////////////////////////////////////////////////////////////////
 // Convertir le mot aleatoire en tableau
-function splitWordInArray(randomWord) {
+function splitRandomWordInArray(randomWord) {
     let arrayWord = randomWord.split('');
     return arrayWord;    
 }
@@ -63,37 +66,37 @@ var randomWord = choiceRandomWord(WORDS);
 console.log(randomWord);
 
 //split le mot random
-var arrayWord = splitWordInArray(randomWord);
+var arrayWord = splitRandomWordInArray(randomWord);
+console.log(arrayWord);
 
 // affiche le mot caché
 var hiddenLetter = showHiddenLetter(randomWord)
-console.log(`Trouves le mot caché : ${hiddenLetter}`);
 alert(`Trouve le mot caché : ${hiddenLetter}`);
+console.log(`${hiddenLetter}`);
 
-// Saisie utilisateur    
-// on boucle tant que le score total n'est pas a 0 et que tous les elements n'ont pas été trouvé.
+
 while(scoreTotal > 0) {
-    var userChoice = prompt(`Points restants : ${scoreTotal} \n\n${hiddenLetter}\n\nSaisie une lettre !`);
-    console.log(userChoice);
+// Saisie utilisateur
+    var userChoice = prompt(`Points restants : ${scoreTotal} \n\n${hiddenLetter}\n\nSaisis une lettre !`);
+    console.log(userChoice);  
 
-    for (let i = 0; i < arrayWord.length; i ++) {      
-        if (userChoice === arrayWord[i])  {
-            arrayWord[i] = userChoice;
-            alert(`Points restants : ${scoreTotal}\nGG ! On conctinue`)  
-            console.log("win")         
+
+//check si la lettre est dans le tableau
+    if (arrayWord.includes(userChoice))  {
+        console.log("found");
+        for (var i = 0; i < arrayWord.length; i ++) {
+            if (userChoice == arrayWord[i]) {
+            arrayWord = userChoice += hiddenLetter;
+            console.log(arrayWord);
+            }
         }
-        else {
-            scoreTotal --, alert(`Points restants : ${scoreTotal}\nTry again ! `);
-            console.log("loose")         
-        }            
     }
+    else {
+        console.log("not found");        
+    }            
+
+    scoreTotal --;
 }
-
- 
-
-
-
-
 
 
 
