@@ -86,16 +86,15 @@ while(scoreTotal > 0) {
         console.log("found");
         for (var i = 0; i < arrayWord.length; i ++) {
             if (userChoice == arrayWord[i]) {
-            arrayWord = userChoice += hiddenLetter;
+            userChoice += hiddenLetter;
             console.log(arrayWord);
             }
         }
     }
     else {
         console.log("not found");        
-    }            
-
-    scoreTotal --;
+        scoreTotal --;
+    }
 }
 
 
