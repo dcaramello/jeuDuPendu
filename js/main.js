@@ -10,11 +10,12 @@
 //                     ||
 // -----------------------------------------------------------------------------------------------------------------------
 
-// message bienvenue
+// message de bienvenue
 alert("Bienvenue dans le jeu du pendu !");
 
 // LES VARIABLES
-var scoreTotal = 7;
+var scoreTotal = 7; //les points de vie
+var wordInProgress = 0; //pour determiner quand le mot est trouvé
 const WORDS = [
     "javascript",
     "programming",
@@ -29,71 +30,77 @@ const WORDS = [
     "code",
     "web",
     "computer"
-]
-console.log(WORDS);
+];
+
 //////////////////////////////////////////////////////////////////////////////
-//Choix aléatoire
+// LES FONCTIONS
+
+//Choix aléatoire d'un mot dans WORDS
 function choiceRandomWord (){
     let randomWord = Math.floor(Math.random() * Math.floor(WORDS.length));
     return WORDS[randomWord];
 }
 
-//////////////////////////////////////////////////////////////////////////////
-// Convertir le mot aleatoire en tableau
-function splitWordInArray(randomWord) {
+// Convertir le mot aleatoire en tableau avec la methode split
+function splitRandomWordInArray(randomWord) {
     let arrayWord = randomWord.split('');
     return arrayWord;    
 }
 
-//////////////////////////////////////////////////////////////////////////////
 // convertir les éléments du tableau en " _ " pour l'affichage
 function showHiddenLetter (randomWord){
     let hiddenLetter = [];
-    for (var i of randomWord){
-        hiddenLetter += " _ ";
+    for (let i = 0; i < randomWord.length; i++){
+        hiddenLetter[i] = " _ ";
     }
     return hiddenLetter;
 }
 
-//////////////////////////////////////////////////////////////////////////////
-// Le jeu
-
-//genere un mot random
-var randomWord = choiceRandomWord(WORDS);
-console.log(randomWord);
-
-//split le mot random
-var arrayWord = splitWordInArray(randomWord);
-
-// affiche le mot caché
-var hiddenLetter = showHiddenLetter(randomWord)
-console.log(`Trouves le mot caché : ${hiddenLetter}`);
-alert(`Trouve le mot caché : ${hiddenLetter}`);
-
-// Saisie utilisateur    
-// on boucle tant que le score total n'est pas a 0 et que tous les elements n'ont pas été trouvé.
-while(scoreTotal > 0) {
-    var userChoice = prompt(`Points restants : ${scoreTotal} \n\n${hiddenLetter}\n\nSaisie une lettre !`);
-    console.log(userChoice);
-
-    for (let i = 0; i < arrayWord.length; i ++) {      
-        if (userChoice === arrayWord[i])  {
-            arrayWord[i] = userChoice;
-            alert(`Points restants : ${scoreTotal}\nGG ! On conctinue`)  
-            console.log("win")         
-        }
-        else {
-            scoreTotal --, alert(`Points restants : ${scoreTotal}\nTry again ! `);
-            console.log("loose")         
-        }            
+// function pour vérifier q'une seule lettre a été saisie
+function justOneLetter (oneLetter) {
+    while(oneLetter.length > 1) {
+        oneLetter = prompt("Attention, il faut rentrer une seule lettre !");
     }
+    return oneLetter;
 }
 
- 
+//////////////////////////////////////////////////////////////////////////////
+// Le jeu
+//---------
+// Tant que les points restants n'ont pas atteint 0 la partie continue
+// le joueur saisie une lettre
+// si la lettre est présente dans le tableau arrayWord, elle remplace la valeur correspondante du tableau hiddenLetter 
+// a chaque valeur de hiddenLetter révélée on incrémente un point de wordInProgress. 
+// Si la valeur de wordInProgress est égale au nombre d'élément de arrayWord c'est gagné
 
+var randomWord = choiceRandomWord(WORDS);
+var arrayWord = splitRandomWordInArray(randomWord);
+var hiddenLetter = showHiddenLetter(randomWord)
 
+alert(`Trouves le mot caché : ${hiddenLetter}`);
 
+while(scoreTotal > 0) {
 
+    var userChoice = justOneLetter(prompt(`Points restants : ${scoreTotal} \n\n${hiddenLetter}\n\nSaisis une lettre !`));
+    if (arrayWord.includes(userChoice))  {
+        for (var i = 0; i < arrayWord.length; i ++) {
+            if (userChoice.toLowerCase() === arrayWord[i]) {
+                hiddenLetter[i] = userChoice.toLowerCase();
+                wordInProgress ++;    
+            }
+        }
+    }
+    else {
+        scoreTotal --;
+    }
+    if(wordInProgress === arrayWord.length){
+        alert("Félicitation tu as gagné !");
+        break;
+    }
+    else if (scoreTotal === 0) {
+        alert("Perdu !...");
+    }
+}
 
 
 
