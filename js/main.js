@@ -58,6 +58,16 @@ function showHiddenLetter (randomWord){
     return hiddenLetter;
 }
 
+function userPutLetter () {
+    var userChoice = prompt(`Points restants : ${scoreTotal} \n\n${hiddenLetter}\n\nSaisis une lettre !`);
+    if (userChoice.lenght != 1) {
+        alert("Une seule lettre svp")
+    }
+    else {
+        return userChoice;
+    } 
+}
+
 //////////////////////////////////////////////////////////////////////////////
 // Le jeu
 
@@ -76,8 +86,9 @@ console.log(`${hiddenLetter}`);
 
 
 while(scoreTotal > 0) {
-// Saisie utilisateur
-    var userChoice = prompt(`Points restants : ${scoreTotal} \n\n${hiddenLetter}\n\nSaisis une lettre !`);
+    // Saisie utilisateur
+    var userChoice = userPutLetter();
+    
     console.log(userChoice);  
 
 
