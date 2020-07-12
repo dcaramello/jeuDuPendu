@@ -58,14 +58,11 @@ function showHiddenLetter (randomWord){
     return hiddenLetter;
 }
 
-function userPutLetter () {
-    var userChoice = prompt(`Points restants : ${scoreTotal} \n\n${hiddenLetter}\n\nSaisis une lettre !`);
-    if (userChoice.lenght != 1) {
-        alert("Une seule lettre svp")
+function justOneLetter (oneLetter) {
+    while(oneLetter.length > 1) {
+        oneLetter = prompt("Une seule lettre svp!");
     }
-    else {
-        return userChoice;
-    } 
+    return oneLetter;
 }
 
 //////////////////////////////////////////////////////////////////////////////
@@ -87,8 +84,7 @@ console.log(`${hiddenLetter}`);
 
 while(scoreTotal > 0) {
     // Saisie utilisateur
-    var userChoice = userPutLetter();
-    
+    var userChoice = justOneLetter(prompt(`Points restants : ${scoreTotal} \n\n${hiddenLetter}\n\nSaisis une lettre !`));
     console.log(userChoice);  
 
 
@@ -96,8 +92,8 @@ while(scoreTotal > 0) {
     if (arrayWord.includes(userChoice))  {
         console.log("found");
         for (var i = 0; i < arrayWord.length; i ++) {
-            if (userChoice == arrayWord[i]) {
-            userChoice += hiddenLetter;
+            if (userChoice.toLowerCase() === arrayWord[i]) {
+            hiddenLetter[i] = userChoice.toLowerCase();
             console.log(arrayWord);
             }
         }
