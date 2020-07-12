@@ -1,0 +1,8 @@
+title: Jeudupendu
+description: Jeu du pendu, développé en full javascript dans le cadre de ma formation Dev web a l'afpa. Ce projet a pour but d’approfondir les connaissances acquises en début de formation.
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-hacker
+
+gems:
+  - jekyll-mentions
