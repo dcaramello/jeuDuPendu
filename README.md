@@ -1,4 +1,4 @@
-#Le jeu du pendu
+# Le jeu du pendu
 
 ## Règles du jeu :
 
