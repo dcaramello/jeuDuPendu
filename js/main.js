@@ -11,25 +11,35 @@
 // -----------------------------------------------------------------------------------------------------------------------
 
 // message de bienvenue
-alert("Bienvenue dans le jeu du pendu !");
+alert("Bienvenue dans le jeu du pendu!");
 
 // LES VARIABLES
 var scoreTotal = 7; //les points de vie
 var wordInProgress = 0; //pour determiner quand le mot est trouvé
 const WORDS = [
-    "javascript",
-    "programming",
-    "git",
-    "linux",
-    "data",
-    "server",
-    "client",
-    "php",
-    "github",
-    "terminal",
-    "code",
-    "web",
-    "computer"
+    "tomate",
+    "chaise",
+    "pain",
+    "chien",
+    "chat",
+    "table",
+    "jardin",
+    "guitare",
+    "arbre",
+    "poisson",
+    "cuisine",
+    "voiture",
+    "ordinateur",
+    "banane",
+    "bureau",
+    "fauteuil",
+    "chambre",
+    "pamplemousse",
+    "orange",
+    "cornichon",
+    "sushi",
+    "hamburger",
+    "salade"
 ];
 
 //////////////////////////////////////////////////////////////////////////////
