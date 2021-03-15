@@ -1,3 +1,5 @@
+## Projet Réalisé pendant ma formation Développeur Web et Web Mobile à l'Afpa de Saint Etienne du Rouvray
+
 # Le jeu du pendu
 
 ## Règles du jeu :
@@ -37,16 +39,7 @@ et de continuer a pratiquer afin d'acquérir une méthode professionnelle. C'est
 - Le code est commenté, indenté, lisible et maintenable
 - Le code fait usage au maximum des fonctions et des nouvelles normes JS
 - Le jeu est accessible via un fichier index.html
-- Le code du projet est disponible sur un repository GitHub
-- Le repository contient un fichier README, une description, des mots clef et des commits
 
-## Pour aller plus loin :
-- Proposez une interface de commande à l’utilisateur. Quand celui-ci arrive sur l’index, ce n’est pas
-  le jeu qui démarre mais une interface lui présentant les actions possibles et lui permettant de taper
-  une commande. Liste des commandes :
-• j : jouer → cela lance le jeu du pendu
-• r : règles → cela affiche les règles
-• q : quitter → arrête l’application
 
 
 
